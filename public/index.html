@@ -107,19 +107,19 @@
 		}
 		//SPRITE
 		const sprite = [
+			0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+			0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0,
+			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 
+			0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
-			0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0,
-			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-			1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
-			0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
-			0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 		];
 
 		const spriteSize = {
@@ -130,7 +130,7 @@
 		const color = [
 			colors.black,
 			colors.yellow
-		].reverse();
+		];
 
 		const offset = {
 			x: 20,
@@ -146,7 +146,7 @@
 		}
 
 		const fadingClear = () => {
-			canvasContext.fillStyle = colors.yellow;
+			canvasContext.fillStyle = colors.black;
 			canvasContext.fillRect(0, 0, canvasElement.width, canvasElement.height);
 		}
 		let frameCount = 0;
@@ -165,7 +165,7 @@
 								color[value]
 							);
 						});
-			drawText("I don't care.. ", 15, colors.white);
+			drawText("Don't believe me?", 15, colors.white);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
