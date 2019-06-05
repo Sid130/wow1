@@ -61,7 +61,8 @@
 	<script>
 		const colors = {
 			red: 'rgba(255, 50, 0, .8)',
-			white: 'rgba(0,0,0,0)'
+			white: 'rgba(0,0,0,0)',
+			whiteFade: 'rgba(255,255,255,0.2)'
 		}
 		const canvasElement = document.querySelector('canvas');
 		const canvasContext = canvasElement.getContext("2d");
@@ -124,23 +125,13 @@
 		}
 		//COLOR MAP
 		const color = [
-			colors.white,
-			colors.red
+			"FFFFFF",
+			"FF5555"
 		];
 
 		const offset = {x: 30, y: 30};
 
-		for(let yOffset = 0; yOffset < 10; yOffset++)
-			for(let xOffset = 0; xOffset < 10; xOffset++)
-				sprite.map((value, index) => {
-					const x = index % spriteSize.x;
-					const y = Math.floor(index / spriteSize.y);
-					drawPictureElement(
-						x + xOffset * offset.x, 
-						y + yOffset * offset.y,
-						color[value]
-					);
-				});
+
 			
 
 		function drawText (string, fontSize, color) {
@@ -151,7 +142,31 @@
 			canvasContext.fillText(string, canvasElement.width / 2, canvasElement.height / 2);
 		}
 
-		drawText("create chapter.. a new directory", 10, colors.red);
+		const fadingClear = () => {
+			canvasContext.fillStyle = colors.whiteFade;
+			canvasContext.fillRect(0, 0, canvasElement.width, canvasElement.height);
+		}
+		let frameCount = 0;
+		function draw() {	
+			frameCount++;
+			frameCount %= 360;
+			if(Math.random() > .5)
+				for(let yOffset = 0; yOffset < 10; yOffset++)
+					for(let xOffset = 0; xOffset < 10; xOffset++)
+						sprite.map((value, index) => {
+							const x = index % spriteSize.x;
+							const y = Math.floor(index / spriteSize.y);
+							drawPictureElement(
+								Math.sin(frameCount/ 100) * 5 + x + xOffset * offset.x, 
+								Math.cos(frameCount/ 60) + y + yOffset * offset.y,
+								color[value]
+							);
+						});
+			drawText("my heart fades out", 10, colors.red);
+			window.requestAnimationFrame(draw);
+		}
+		//initialize the request animation frame loop
+		window.requestAnimationFrame(draw);
 	</script>
 </body>
 </html>
