@@ -107,24 +107,12 @@
 		}
 		//SPRITE
 		const sprite = [
-			0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-			0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0,
-			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 
-			0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+			0, 0
 		];
 
 		const spriteSize = {
-			x: 11,
-			y: 12	
+			x: 2,
+			y: 1	
 		}
 		//COLOR MAP
 		const color = [
@@ -165,7 +153,7 @@
 								color[value]
 							);
 						});
-			drawText("Don't believe me?", 15, colors.white);
+			drawText("I was there.. and always be there", 16, colors.white);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
