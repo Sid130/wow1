@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>🌷🌷🌷🌷</title>
+	<style>
+		* {
+			border: 0;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			padding-top: 56.25%;
+			position: relative;
+		}
+		canvas {
+			image-rendering: pixelated;
+			left: 50%;
+			height: 100%;
+			width: 100%;
+			max-width: 100%;
+			max-height: 100%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			position: absolute;
+		}
+		button {
+			position: absolute;
+			width: 4rem;
+			height: 4rem;
+			position: absolute;
+			top: 0;
+			right: 1vh;
+			background: #3f0404;
+			border-radius: 0 0 30% 30%;
+			text-align: center;
+			line-height: 3.99rem;
+			font-size: 30px;
+			color: red;
+			opacity: .5;
+			transition: opacity ease-in-out 300ms;
+		}
+		button:hover {
+			opacity: .7;
+		}
+		button:disabled {
+			opacity: .33;
+		}
+		button + button {
+			right: auto;
+			left: 1vh;
+		}
+	</style>
+</head>
+<body>
+	<canvas width="1920" height="1080"></canvas>
+	<button title="next commit">⮞</button>
+	<button title="previous commit">⮜</button>
+	<script>
+		const canvasElement = document.querySelector('canvas');
+		const canvasContext = canvasElement.getContext("2d");
+		const buttonForward = document.querySelector('button');
+		const buttonBackward = document.querySelector('button + button');
+
+		const index = document.location.search.replace('?', '') || -1;
+		if(index < 12)
+			buttonForward.addEventListener('click', () => {
+				fetch(`/goto/${index * 1 + 1}`)
+				.then(() => {
+					document.location.href = `/?${index * 1 + 1}`
+				});
+			})
+		else
+			buttonBackward.setAttribute('disabled', true);
+
+		if(index >= 0)
+			buttonBackward.addEventListener('click', () => {
+				fetch(`/goto/${index - 1}`)
+				.then(() => {
+					document.location.href = `/?${index - 1}`
+				});
+			})
+		else
+			buttonBackward.setAttribute('disabled', true);
+
+		function drawText (string, fontSize, color) {
+			canvasContext.font = fontSize.toString() + "px arial, gothic";
+			canvasContext.fillStyle = color;
+			canvasContext.textBaseline = "middle";
+			canvasContext.textAlign = "center";
+			canvasContext.fillText(string, canvasElement.width / 2, canvasElement.height / 2);
+		}
+		
+		drawText("🌷 inital commit 🌷", 120, "red")
+	</script>
+</body>
+</html>
