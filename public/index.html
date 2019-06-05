@@ -107,20 +107,20 @@
 		}
 		//SPRITE
 		const sprite = [
-			0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-			0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0,
-			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
-			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 
-			0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-		].reverse();
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+			0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0,
+			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
+			1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+			0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+			0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
+		];
 
 		const spriteSize = {
 			x: 11,
@@ -130,7 +130,7 @@
 		const color = [
 			colors.black,
 			colors.yellow
-		];
+		].reverse();
 
 		const offset = {
 			x: 20,
@@ -146,7 +146,7 @@
 		}
 
 		const fadingClear = () => {
-			canvasContext.fillStyle = colors.whiteFade;
+			canvasContext.fillStyle = colors.yellow;
 			canvasContext.fillRect(0, 0, canvasElement.width, canvasElement.height);
 		}
 		let frameCount = 0;
@@ -154,7 +154,6 @@
 			fadingClear();
 			frameCount++;
 			frameCount %= 360;
-			if(Math.random() > .1)
 				for(let yOffset = 0; yOffset < 10; yOffset++)
 					for(let xOffset = 0; xOffset < 15; xOffset++)
 						sprite.map((value, index) => {
@@ -166,7 +165,7 @@
 								color[value]
 							);
 						});
-			drawText("What was I doing? ", 15, colors.white);
+			drawText("I don't care.. ", 15, colors.white);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
