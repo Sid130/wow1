@@ -61,7 +61,8 @@
 	<script>
 		const colors = {
 			red: 'rgba(255, 50, 0, .8)',
-			white: 'rgba(0,0,0,0.5)',
+			black: 'rgba(0,0,0,0.2)',
+			white: 'rgba(255,255,255,1)',
 			whiteFade: 'rgba(0,0,0,0.5)',
 			yellow: 'rgba(220,190,0,1)'
 		}
@@ -106,19 +107,19 @@
 		}
 		//SPRITE
 		const sprite = [
-			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0,
-			1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
-			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-			1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-			0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
-			0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
-			0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
 		];
 		const spriteSize = {
 			x: 11,
@@ -126,14 +127,11 @@
 		}
 		//COLOR MAP
 		const color = [
-			colors.white,
+			colors.black,
 			colors.red
 		];
 
-		const offset = {x: 30, y: 30};
-
-
-			
+		const offset = spriteSize;
 
 		function drawText (string, fontSize, color) {
 			canvasContext.font = fontSize.toString() + "px monospace";
@@ -153,8 +151,8 @@
 			frameCount++;
 			frameCount %= 360;
 			if(Math.random() > .1)
-				for(let yOffset = 0; yOffset < 10; yOffset++)
-					for(let xOffset = 0; xOffset < 10; xOffset++)
+				for(let yOffset = 0; yOffset < 25; yOffset++)
+					for(let xOffset = 0; xOffset < 30; xOffset++)
 						sprite.map((value, index) => {
 							const x = index % spriteSize.x;
 							const y = Math.floor(index / spriteSize.y);
@@ -164,7 +162,7 @@
 								color[value]
 							);
 						});
-			drawText("Im okay... 😁", 16, colors.yellow);
+			drawText("If you say... ", 16, colors.white);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
