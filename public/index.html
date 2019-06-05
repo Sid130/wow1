@@ -107,19 +107,19 @@
 		}
 		//SPRITE
 		const sprite = [
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+			0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+			0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0,
+			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+			0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 
+			0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 		];
 		const spriteSize = {
 			x: 11,
@@ -128,10 +128,13 @@
 		//COLOR MAP
 		const color = [
 			colors.black,
-			colors.red
+			colors.yellow
 		];
 
-		const offset = spriteSize;
+		const offset = {
+			x: 20,
+			y: 20
+		}
 
 		function drawText (string, fontSize, color) {
 			canvasContext.font = fontSize.toString() + "px monospace";
@@ -151,18 +154,18 @@
 			frameCount++;
 			frameCount %= 360;
 			if(Math.random() > .1)
-				for(let yOffset = 0; yOffset < 25; yOffset++)
-					for(let xOffset = 0; xOffset < 30; xOffset++)
+				for(let yOffset = 0; yOffset < 10; yOffset++)
+					for(let xOffset = 0; xOffset < 15; xOffset++)
 						sprite.map((value, index) => {
 							const x = index % spriteSize.x;
 							const y = Math.floor(index / spriteSize.y);
 							drawPictureElement(
-								Math.sin(frameCount/ 100) * 5 + x + xOffset * offset.x, 
-								Math.cos(frameCount/ 60) + y + yOffset * offset.y,
+								Math.sin(frameCount/ 50) * 10 + x + xOffset * offset.x, 
+								Math.cos(frameCount/ 50) * 5 + y + yOffset * offset.y,
 								color[value]
 							);
 						});
-			drawText("If you say... ", 16, colors.white);
+			drawText("I don't know or... ", 16, colors.red);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
