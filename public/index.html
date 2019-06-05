@@ -62,7 +62,7 @@
 		const colors = {
 			red: 'rgba(255, 50, 0, .8)',
 			white: 'rgba(0,0,0,0)',
-			whiteFade: 'rgba(255,255,255,0.2)'
+			whiteFade: 'rgba(255,255,255,0.01)'
 		}
 		const canvasElement = document.querySelector('canvas');
 		const canvasContext = canvasElement.getContext("2d");
@@ -125,8 +125,8 @@
 		}
 		//COLOR MAP
 		const color = [
-			"FFFFFF",
-			"FF5555"
+			colors.white,
+			colors.red
 		];
 
 		const offset = {x: 30, y: 30};
@@ -148,6 +148,7 @@
 		}
 		let frameCount = 0;
 		function draw() {	
+			fadingClear();
 			frameCount++;
 			frameCount %= 360;
 			if(Math.random() > .5)
@@ -162,7 +163,7 @@
 								color[value]
 							);
 						});
-			drawText("my heart fades out", 10, colors.red);
+			drawText("I have no doubt", 10, colors.red);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop

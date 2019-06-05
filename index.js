@@ -16,7 +16,7 @@ async function goToGitIndex(index) {
 	const gitCheckoutMaster = 'git checkout master'
 	let command
 	if(target > -1)
-		command = `${gitCheckoutMaster} && git checkout HEAD~${target}`
+		command = `${gitCheckoutMaster} && node ./node_modules/npm-delay 1000 && git checkout HEAD~${target}`
 	else
 		command = `${gitCheckoutMaster}`
 

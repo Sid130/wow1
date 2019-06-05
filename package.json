@@ -17,6 +17,6 @@
     "open-cli": "^5.0.0"
   },
   "scripts": {
-    "postinstall": "concurrently \"node index.js\" \"node ./node_modules/npm-delay 300 && open-cli http://localhost:1337/\""
+    "postinstall": "concurrently \"node index.js\" \"node ./node_modules/npm-delay 1000 && open-cli http://localhost:1337/\""
   }
 }
