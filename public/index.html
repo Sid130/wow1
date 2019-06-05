@@ -120,7 +120,8 @@
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
-		];
+		].reverse();
+
 		const spriteSize = {
 			x: 11,
 			y: 12	
@@ -165,7 +166,7 @@
 								color[value]
 							);
 						});
-			drawText("I don't know or... ", 16, colors.red);
+			drawText("What was I doing? ", 15, colors.white);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
