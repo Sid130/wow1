@@ -55,7 +55,7 @@
 	</style>
 </head>
 <body>
-	<canvas width="1920" height="1080"></canvas>
+	<canvas width="320" height="180"></canvas>
 	<button title="next commit">⮞</button>
 	<button title="previous commit">⮜</button>
 	<script>
@@ -75,7 +75,7 @@
 		else
 			buttonBackward.setAttribute('disabled', true);
 
-		if(index >= 0)
+		if(index > 0)
 			buttonBackward.addEventListener('click', () => {
 				fetch(`/goto/${index - 1}`)
 				.then(() => {
@@ -85,15 +85,69 @@
 		else
 			buttonBackward.setAttribute('disabled', true);
 
-		function drawText (string, fontSize, color) {
-			canvasContext.font = fontSize.toString() + "px arial, gothic";
+		//DRAW FUNCTIONS
+		const drawPictureElement = (x, y, color) => {
+			if(color.length === 6) {
+				color = "#" + color;
+			}
 			canvasContext.fillStyle = color;
-			canvasContext.textBaseline = "middle";
+			canvasContext.fillRect(
+				x,
+				y,
+				1,
+				1
+			);
+		}
+		//SPRITE
+		const sprite = [
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+			0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+		];
+		const spriteSize = {
+			x: 11,
+			y: 12	
+		}
+		//COLOR MAP
+		const color = [
+			"FFFFFF",
+			"FF5555"
+		];
+
+		const offset = {x: 50, y: 50};
+
+		for(let yOffset = 0; yOffset < 10; yOffset++)
+			for(let xOffset = 0; xOffset < 10; xOffset++)
+				sprite.map((value, index) => {
+					const x = index % spriteSize.x;
+					const y = Math.floor(index / spriteSize.y);
+					drawPictureElement(
+						x + xOffset * offset.x, 
+						y + yOffset * offset.y,
+						color[value]
+					);
+				});
+			
+
+		function drawText (string, fontSize, color) {
+			canvasContext.font = fontSize.toString() + "px monospace";
+			canvasContext.fillStyle = color;
+			canvasContext.textBaseline = "bottom";
 			canvasContext.textAlign = "center";
 			canvasContext.fillText(string, canvasElement.width / 2, canvasElement.height / 2);
 		}
-		
-		drawText("🌷 inital commit 🌷", 120, "red")
+
+		drawText("implement draw picture element from memory", 10, "red")
 	</script>
 </body>
 </html>
