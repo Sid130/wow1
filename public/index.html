@@ -59,6 +59,10 @@
 	<button title="next commit">⮞</button>
 	<button title="previous commit">⮜</button>
 	<script>
+		const colors = {
+			red: 'rgba(255, 50, 0, .8)',
+			white: 'rgba(0,0,0,0)'
+		}
 		const canvasElement = document.querySelector('canvas');
 		const canvasContext = canvasElement.getContext("2d");
 		const buttonForward = document.querySelector('button');
@@ -75,7 +79,7 @@
 		else
 			buttonBackward.setAttribute('disabled', true);
 
-		if(index > 0)
+		if(index >= 0)
 			buttonBackward.addEventListener('click', () => {
 				fetch(`/goto/${index - 1}`)
 				.then(() => {
@@ -102,15 +106,15 @@
 		const sprite = [
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-			0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0,
-			1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
-			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-			1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-			0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
-			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
-			0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
-			0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
+			0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0,
+			1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+			1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1,
+			1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1,
+			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+			0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+			0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+			0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
+			0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
 		];
@@ -120,11 +124,11 @@
 		}
 		//COLOR MAP
 		const color = [
-			"FFFFFF",
-			"FF5555"
+			colors.white,
+			colors.red
 		];
 
-		const offset = {x: 50, y: 50};
+		const offset = {x: 30, y: 30};
 
 		for(let yOffset = 0; yOffset < 10; yOffset++)
 			for(let xOffset = 0; xOffset < 10; xOffset++)
@@ -147,7 +151,7 @@
 			canvasContext.fillText(string, canvasElement.width / 2, canvasElement.height / 2);
 		}
 
-		drawText("implement draw picture element from memory", 10, "red")
+		drawText("create chapter.. a new directory", 10, colors.red);
 	</script>
 </body>
 </html>
