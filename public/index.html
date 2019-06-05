@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>🌷🌷🌷🌷</title>
+	<title>😁😁😁😁</title>
 	<style>
 		* {
 			border: 0;
@@ -61,8 +61,9 @@
 	<script>
 		const colors = {
 			red: 'rgba(255, 50, 0, .8)',
-			white: 'rgba(0,0,0,0)',
-			whiteFade: 'rgba(255,255,255,0.01)'
+			white: 'rgba(0,0,0,0.5)',
+			whiteFade: 'rgba(0,0,0,0.5)',
+			yellow: 'rgba(220,190,0,1)'
 		}
 		const canvasElement = document.querySelector('canvas');
 		const canvasContext = canvasElement.getContext("2d");
@@ -107,15 +108,15 @@
 		const sprite = [
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 			0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-			0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0,
-			1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
-			1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1,
-			1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1,
-			1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-			0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-			0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
-			0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
-			0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+			0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
 			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
 		];
@@ -151,7 +152,7 @@
 			fadingClear();
 			frameCount++;
 			frameCount %= 360;
-			if(Math.random() > .5)
+			if(Math.random() > .1)
 				for(let yOffset = 0; yOffset < 10; yOffset++)
 					for(let xOffset = 0; xOffset < 10; xOffset++)
 						sprite.map((value, index) => {
@@ -163,7 +164,7 @@
 								color[value]
 							);
 						});
-			drawText("I have no doubt", 10, colors.red);
+			drawText("Im okay... 😁", 16, colors.yellow);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
