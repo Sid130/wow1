@@ -25,6 +25,11 @@
 			top: 50%;
 			transform: translate(-50%, -50%);
 			position: absolute;
+			opacity: 1;
+			transition: opacity ease-in 13337ms;
+		}
+		canvas.fadeout {
+			opacity: 0;
 		}
 		button {
 			position: absolute;
@@ -107,21 +112,33 @@
 		}
 		//SPRITE
 		const sprite = [
-			0, 0
+			0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+			0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+			0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1,
+			1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+			0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+			0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+			0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+			0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0,
+			0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0,
 		];
-
 		const spriteSize = {
-			x: 2,
-			y: 1	
+			x: 11,
+			y: 12	
 		}
+
 		//COLOR MAP
 		const color = [
-			colors.black,
-			colors.yellow
-		];
+			colors.red,
+			colors.black
+		].reverse();
 
 		const offset = {
-			x: 20,
+			x: 22,
 			y: 20
 		}
 
@@ -148,16 +165,18 @@
 							const x = index % spriteSize.x;
 							const y = Math.floor(index / spriteSize.y);
 							drawPictureElement(
-								Math.sin(frameCount/ 50) * 10 + x + xOffset * offset.x, 
-								Math.cos(frameCount/ 50) * 5 + y + yOffset * offset.y,
+								Math.sin(frameCount/30) * 10 + x + xOffset * offset.x, 
+								Math.cos(frameCount/60) * 15 + y + yOffset * offset.y,
 								color[value]
 							);
 						});
-			drawText("I was there.. and always be there", 16, colors.white);
+			drawText("THE END", 16, colors.white);
 			window.requestAnimationFrame(draw);
 		}
 		//initialize the request animation frame loop
 		window.requestAnimationFrame(draw);
+
+		setTimeout(() => { canvasElement.classList.add('fadeout')}, 1000);
 	</script>
 </body>
 </html>
